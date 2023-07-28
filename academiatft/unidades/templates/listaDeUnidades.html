@@ -1,0 +1,32 @@
+{% extends 'padre.html' %}
+
+
+{% block contenido %}
+
+    <h1> Unidades del Set 9 </h1>
+    
+    {% for unidad in unidades %}
+        <h2> nombre: {{ unidad.nombre }} </h2>
+        <h4> habilidad: {{ unidad.habilidad.nombre }}: {{ unidad.habilidad.descripcion }}</h4>
+        <div>
+            <h4>rasgos:
+            {% for rasgo in unidad.rasgos.all %}
+                <h5>rasgo: {{ rasgo.nombre }}</h5>
+            {% endfor %}
+            </h4>
+        </div>
+
+        <h4> coste: {{ unidad.coste }} </h4>
+        <h4> vida: {{ unidad.vida }} </h4>
+        <h4> armadura: {{ unidad.armadura }} </h4>
+        <h4> resistencia magica: {{ unidad.resistenciaMagica }} </h4>
+        <h4> daño: {{ unidad.dano }} </h4>
+        <h4> velocidad de ataque: {{ unidad.velocidadDeAtaque }} </h4>
+        <h4> chance de crítico: {{ unidad.chanceDeCritico }} </h4>
+        <h4> multiplicador de crítico: {{ unidad.multiplicadorDeCritico }} </h4>
+        <h4> mana: {{ unidad.manaInicial }}/{{ unidad.mana }} </h4>
+        <h4> rango: {{ unidad.rango }} </h4>
+
+    {% endfor %}
+
+{% endblock %}
