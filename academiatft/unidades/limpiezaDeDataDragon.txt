@@ -1,3 +1,13 @@
-1) limpiar unidades agenas al set9
-2) reordenar columnas a gusto
-3) modificar columna stats para que almacene dicts en lugar de strings con formato de dict
+Siguiendo estos pasos, partiendo de cualquier version del dataDragon.json, deberia obtener un dataframe confiable
+
+1) Limpiar unidades agenas al Set9
+
+2) Dar consistencia a valores numericos (los INT dentro de dicts/listas estaban generando conflicto con la
+evaluacion literal
+de estos, por eso se deben castear a FLOAT)
+
+3) Redondear floats para que evaluacion literal pueda digerirlos corretamente
+
+4) Reordenar y eliminar columnas segun relevancia
+
+5) Modificar columna stats para que almacene dicts en lugar de strings con formato de dict (evaluacion literal)
