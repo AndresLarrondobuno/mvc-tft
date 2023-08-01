@@ -1,6 +1,7 @@
 import pandas as pd
 import os, json
-from academiatft.academiatft.administradorDeRutasDeArchivos import obtenerRutaAArchivo
+from academiatft.academiatft.administradorDeRutasDeArchivos import AdministradorDeRutasDeArchivos
+from academiatft.academiatft.procesadorDeDatos import ProcesadorDeDatos
 
 def run():
     print('items.poblarBaseDeDatos corrio correctamente!')
@@ -39,9 +40,8 @@ nombresDeItems = [
     "Demacia Emblem"]
 
 
-
 def construirDataframeUnidades():
-    rutaLocalDeDataDragonJson = obtenerRutaAArchivo('dataDragon.json')
+    rutaLocalDeDataDragonJson = AdministradorDeRutasDeArchivos.obtenerRutaAArchivo('dataDragon.json')
 
     with open(rutaLocalDeDataDragonJson) as tftDataJson:
 
@@ -57,10 +57,10 @@ def construirDataframeUnidades():
 
         dataframe = dataframe.reindex(columns=labelsReordenadosParaColumnas)
 
-        dataframe = castearColumnaStatsAFloat(dataframe)
+        dataframe = ProcesadorDeDatos.castearColumnaStatsAFloat(dataframe)
 
-        dataframe = deserializarCamposString(dataframe)
+        dataframe = ProcesadorDeDatos.deserializarCamposString(dataframe)
 
-        dataframe = eliminarDatosNulos(dataframe)
+        dataframe = ProcesadorDeDatos.eliminarDatosNulos(dataframe)
 
         return dataframe
